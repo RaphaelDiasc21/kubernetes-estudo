@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: go-ingress
+spec:
+  tls:
+    - secretName: secret
+      hosts:
+      - goapp.com
+  rules:
+    - host: goapp.com
+      http:
+        paths:
+        - backend: 
+            serviceName: go-service
+            servicePort: 7000
+            
